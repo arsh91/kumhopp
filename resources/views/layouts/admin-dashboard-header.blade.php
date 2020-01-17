@@ -18,6 +18,12 @@
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
 					</li>
+					<li class="{{ $request->segment(1) == 'salesperson' ? 'active' : '' }} nav-item">
+							<a class="nav-link" href="{{ route('salesperson.index') }}">
+							<span class="menu-title">Sales Person</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
 					<!--<li>
 						<a class="nav-link" href="{{ route('pages.index') }}">
 							<span class="menu-title">Pages</span>

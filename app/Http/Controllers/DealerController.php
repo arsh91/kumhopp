@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-//use App\Dealer;
+
+use Auth;
 use App\User;
 use App\Dealer;
 use App\DealerSale;
+use App\SalePerson;
 use App\PointHistory;
 use App\PasswordReset;
 use Illuminate\Http\Request;
@@ -16,7 +18,8 @@ use App\Http\Requests\UpdateDealerRequest;
 use App\Notifications\PasswordResetRequest;
 use App\Notifications\PasswordResetSuccess;
 use Mail;
-use Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class DealerController extends Controller
 {
@@ -268,6 +271,11 @@ class DealerController extends Controller
 	
 	//read Customer-dealer.csv to create and update new dealers with acc_no
 	public function customer_dealer_readCSV() { 
+	
+		$newDealerWithoutAccNo = array();
+		$dealerWithOneAccNo = array();
+		$dealersWithMultipleAccNo = array();
+		
 		$array = array('delimiter' => ',');
 		$csvFileName = "customer-dealers.csv";
 		$csvFile = public_path($csvFileName);
@@ -280,20 +288,66 @@ class DealerController extends Controller
 		$adminID = Auth::id();
 		unset($dealers[0]);
 		$insertCount = 0;
-		
+		//dump($dealers);
+		//die('---');
+	//	echo "Company Name						Account No <br/>";
+		echo '<table  border="1"><thead>';
+		echo '<th>Company Name</th>';
+		echo '<th>Account No</th>';
+		echo '</thead></tbody>';
 		foreach($dealers as $k=>$val) {
 			$dealer_account_no = $val[1];
-			if(trim($dealer_account_no) != '') { //check if dealer exists with this acc_no
+			if(trim($dealer_account_no) != '') {
 				$firstName = $lastName = '';
 				$dealerWithAccNo = Dealer::where('account_no', $dealer_account_no)->get();
-				if(!empty($dealerWithAccNo)){
-					dump('update case');
-				}else{
-					dump('insert case');
+				
+				$dealerRecordFoundCount = $dealerWithAccNo->count();
+				
+				/*CASE I :- if count is 0 then we need to maintian a array with account no 
+				*/
+				
+				if($dealerRecordFoundCount == 0)
+				{
+					//echo '<tr>';
+					//echo '<td>'.$val[2].'</td>';
+					//echo '<td>'.$dealer_account_no.'</td>';
+					//echo '</tr>';
+					//echo $val[2].'				'.$dealer_account_no;
+					//echo '<br/>';
+					//dump('found 0 record with this'.$dealer_account_no.' and company_name -->'.);
+					$newDealerWithoutAccNo[] = $dealer_account_no;
+					
+					
+				}else if($dealerRecordFoundCount == 1)
+				{
+					
+					
+				}else if($dealerRecordFoundCount > 1)
+				{
+					echo '<tr>';
+					echo '<td>'.$val[2].'</td>';
+					echo '<td>'.$dealer_account_no.'</td>';
+					echo '</tr>';
+					//dump($dealer_account_no.'---'.$dealerRecordFoundCount.'---records exists with this delaer id');
+					$dealersWithMultipleAccNo[] = $dealer_account_no;
+					
+					
 				}
+				
 			}
 						
 		}
+		echo '</tbody>';
+		echo '</table>';
+		
+		
+	//	dump($newDealerWithoutAccNo);
+		
+	//	dump($dealerWithOneAccNo);
+		
+	//	dump($dealersWithMultipleAccNo); 
+				
+		
 	}
 	
 	public function readCSV() { die;
