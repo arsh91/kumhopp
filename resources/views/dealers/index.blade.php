@@ -18,7 +18,8 @@
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								List
+								List 
+
 							</div>
 
 							<div class="panel-body">
@@ -26,10 +27,9 @@
 									<thead>
 										<tr>
 											<!--<th style="text-align:center;"><input type="checkbox" id="select-all" /></th>-->
-											<th>Dealer First Name</th>
-											<th>Dealer Last Name</th>
+											<th>Company Name</th>
 											<th>Dealer Email</th>
-											<!--<th>Status</th>-->
+											<th style="display:none;">Status</th>
 											<th>Dealer Points</th>
 											<th>Monthly Sales</th>
 											<th>Actions</th>
@@ -40,17 +40,16 @@
 										@if (count($dealers) > 0)
 											@foreach ($dealers as $dealer)
 												<tr data-entry-id="{{ $dealer->id }}">
-													<td>{{ $dealer->first_name }}</td>
-													<td>{{ $dealer->last_name }}</td>
+													<td>{{ $dealer->dealers->company_name }}</td>
 													<td>{{ $dealer->email }}</td>
-													<!--<td>
+													<td style="display:none;">
 													@if($dealer->status == 0)
 														<a href="{{ url('dealers/status/'.$dealer->id.'/1') }}" class="btn btn-xs btn-success">Register for KPP</a>
 													@else
 														<a href="javascript:void(0)" class="btn btn-xs btn-primary">Registered</a>
 													@endif
 														
-													</td>-->
+													</td>
 													<td>{{ $dealer->points }}</td>
 													<td>
 														@if($dealer->status == 0)

@@ -35,7 +35,7 @@ class sendOrderConfirmation extends Mailable
 
     public function build()
     {
-        return $this->from('noreply@kumhopp.pineapple.uk.net', 'KUMHOPP')
+        return $this->from('noreply@kumhopartner.co.uk', 'KUMHOPP')
                     ->subject('ORDER GENERATED SUCCESSFULLY !!')
                     ->view('email.orderEmail')
                     ->with([

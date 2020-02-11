@@ -35,17 +35,17 @@
 			@foreach ($vouchers as $voucher)
 			<div class="col-lg-4 col-md-6 mb-4">
 				<div class="card h-100">
-				  <a href="#">
+				 <div class="card-body">  <h4 class="card-title">
+				      <a class="text-dark" href="#">{{ $voucher->voucher_name }}</a>
+				    </h4><a href="#">
 				  	@if($voucher->voucher_image != '')
 						<img class="img-fluid" src="{{ asset('uploads') }}/{{ $voucher->voucher_image }}" alt="{{ $voucher->voucher_name }}" height="250px">
 					@else
 						<img class="img-fluid" src='/img/default.jpg' alt="{{ $voucher->voucher_name }}" height="250px">	
 					@endif
 				  </a>
-				  <div class="card-body">
-				    <h4 class="card-title">
-				      <a class="text-dark" href="#">{{ $voucher->voucher_name }}</a>
-				    </h4>
+				  
+				   
 				    
 				    <p class="card-text"><?php echo str_limit(strip_tags($voucher->voucher_description), 100); ?></p>
 				  </div>

@@ -25,12 +25,11 @@ class UpdateJobRequest extends FormRequest
 		return [
 			'customer_name' => 'required',
 			'contact_name' => 'required',
-			'phone' => 'required',
+			'phone' => 'required|numeric',
 			'address' => 'required',
 			'title' => 'required',
 			'description' => 'required',
-			'dealer_id'=>'required',
-			'target' => 'required'
+			'dealer_id'=>'required'
 		];
     }
 }

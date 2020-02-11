@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\User;
 use App\Dealer;
 use App\Job;
+use App\SalePerson;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use App\Helpers\CustomHelper;
+use Mail;
+use App\Mail\sendJobNotification;
+
 
 class JobController extends Controller
 {
@@ -23,14 +29,29 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+		
+		//Get List of Sales person (with role = 3) for filtering the jobs
+		$salesPerson = User::select('first_name', 'email', 'id')->where('role', '3')->get();
+		//dump($salesPerson);
+		
         $jobs = Job::with([
             'dealers',
-			'dealerCompany'
-        ])->get();
+			'dealerCompany',
+			'getSalesPerson'
+        ]);
+
+		//if any search is submitted
+		if(isset($request->sales_person) && $request->sales_person != ''){
+			$jobs = $jobs->where('job_created_by', $request->sales_person);
+			
+		}
+		
+		$jobs = $jobs->get();
+		
 //dd($jobs);
-        return view('jobs.index', compact('jobs'));
+        return view('jobs.index', compact('jobs', 'salesPerson'));
     }
 
     /**
@@ -46,7 +67,7 @@ class JobController extends Controller
         ]; */
 		
 		$relations = [
-            'dealers' => Dealer::whereNotNull('company_name')->get()->pluck('company_name', 'id')->prepend('Please select', ''),
+            'dealers' => Dealer::whereNotNull('company_name')->orderBy('company_name', 'ASC')->get()->pluck('company_name', 'id')->prepend('Please select', ''),
         ];
 //dd($relations);
         $correct_options = [
@@ -87,10 +108,33 @@ class JobController extends Controller
      */
     public function store(StoreJobRequest $request)
     {
+		$adminDetail = Auth::user();
+		
         $requestToSubmit = $request->all();
         //dd($requestToSubmit);
 
-        Job::create($requestToSubmit);
+        $jobCreated = Job::create($requestToSubmit);
+		
+		if($jobCreated->id){
+			//shoot an email to all the admins
+			//sent an email to all admin's
+			$adminData = CustomHelper::getAllAdminEmails();
+			if(count($adminData) > 0 ){
+				foreach($adminData as $admin){
+					$email = $admin->email; 
+									
+					$emailContent = array('user_name'=>$adminDetail['first_name'], 'job_name'=>$requestToSubmit['title'], 'job_id'=>$jobCreated->id, 'user_email'=>$adminDetail['email']);
+					
+					$mailToAdmin = Mail::to($email)->send(new sendJobNotification($emailContent));
+					if($mailToAdmin){
+						dump('Email sent!');
+					}
+					
+				}
+			}		
+		}
+		
+		
         return redirect()->route('jobs.index');
     }
 
@@ -150,7 +194,8 @@ class JobController extends Controller
         //$jobs = Job::findOrFail($id);
 
         $jobs = Job::with([
-            'dealers'
+            'dealers',
+			'getSalesPerson'
         ])->where('id',$id)->get();
 		//dump($jobs);
 

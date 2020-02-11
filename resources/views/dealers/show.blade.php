@@ -61,7 +61,15 @@
 										<tr><th>Dealer's Website</th>
 											<td>{{ $dealers->dealers->website }}</td>
 										</tr>
-										
+										<tr><th>Sales Person</th>
+											<td>{{ $salesPersonEmail }}</td>
+										</tr>
+										<tr><th>Category</th>
+											<td>{{ $dealers->dealers->category }}</td>
+										</tr>
+										<tr><th>Group</th>
+											<td>{{ $dealers->dealers->group }}</td>
+										</tr>
 										
 										</table>
 									</div>

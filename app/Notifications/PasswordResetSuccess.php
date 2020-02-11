@@ -38,7 +38,7 @@ class PasswordResetSuccess extends Notification implements ShouldQueue
     {
         return (new MailMessage)
 			->from(env('FROM_EMAIL'), 'KUMHOPP')
-            ->subject('KUMHOPP ACCOUNT - PASSWORD UPDATED SUCCESSFULLY !!')
+            ->subject('Kumho Account - Password Updated Successfully !!')
             ->line('You have changed your password successfully.')
             ->line('If you did change password, no further action is required.')
             ->line('If you did not change password, protect your account now.');

@@ -28,11 +28,12 @@ class sendDealerPassword extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@kumhopp.pineapple.uk.net')
-					->subject('Kumhopp: Password for you account!')
+        return $this->from('noreply@kumhopartner.co.uk')
+					->subject('Welcome')
                     ->view('email.dealerPassword')
                     ->with([
                         'name' => $this->emailContent['name'],
+                        'email' => $this->emailContent['email'],
                         'password' => $this->emailContent['password']
                     ]);
     }

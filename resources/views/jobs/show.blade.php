@@ -18,8 +18,13 @@
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								View
+								This job is created by :- <span style="color:red;">
+								@if( $jobs[0]->getSalesPerson->first_name != '')
+									({{$jobs[0]->getSalesPerson->first_name}}) 
+								@endif	
+									{{$jobs[0]->getSalesPerson->email}}</span>
 							</div>
+							<br>
 							
 							<div class="panel-body">
 								<div class="row">
@@ -51,15 +56,27 @@
 											</tr>
 											<tr>
 												<th>Request Date</th>
-												<td>{{ $jobs[0]->created_at }}</td>
+												<td>{{ date('d/M/y', strtotime($jobs[0]->created_at)) }}</td>
 											</tr>
 											<tr>
 												<th>Status</th>
-												<td>
+												<!--<td>
 													@if($jobs[0]->status == 1 || $jobs[0]->status == 3)
 														<button type="button" class="btn btn-success">Active</button>
 													@else
 														<button type="button" class="btn btn-warning">In-Active</button>
+													@endif
+												</td>-->
+												<td>
+													
+													@if($jobs[0]->status == 0)
+														<button type="button" class="btn btn-warning">Pending</button>
+													@elseif($jobs[0]->status == 1)
+														<button type="button" class="btn btn-success">Approved</button>
+													@elseif($jobs[0]->status == 2)
+														<button type="button" class="btn btn-warning">In Progress</button>
+													@else	
+														<button type="button" class="btn btn-success">Completed</button>
 													@endif
 												</td>
 											</tr>
@@ -69,7 +86,7 @@
 											</tr>
 											<tr>
 												<th>Deadline</th>
-												<td>{{ $jobs[0]->deadline }}</td>
+												<td>{{ date('d/M/y', strtotime($jobs[0]->deadline)) }}</td>
 											</tr>
 											<tr>
 												<th>Funding Option</th>

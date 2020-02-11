@@ -28,7 +28,7 @@ class sendEmailNotification extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@kumhopp.pineapple.uk.net')
+        return $this->from('noreply@kumhopartner.co.uk')
         ->view('email.dealerEmail');
     }
 }

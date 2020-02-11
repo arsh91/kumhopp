@@ -40,8 +40,8 @@ class PasswordResetRequest extends Notification implements ShouldQueue
      {
         $url = url('/reset-password/'.$this->token);
         return (new MailMessage)
-			->from(env('FROM_EMAIL', "test@test.com"), 'KUMHOPP')
-            ->subject('KUMHOPP ACCOUNT - RESET YOUR PASSWORD !!')
+			->from(env('FROM_EMAIL', "test@test.com"), 'Kumho Partner')
+            ->subject('Kumho Partner - RESET YOUR PASSWORD !!')
             ->line('You are receiving this email because we received a password reset request for your account.')
             ->action('Reset Password', url($url))
             ->line('If you did not request a password reset, no further action is required.');

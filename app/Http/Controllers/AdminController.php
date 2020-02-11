@@ -20,6 +20,12 @@ class AdminController extends Controller
             }else if(Auth::user()->role == 2)
             {
                 return redirect('/dealerDashboard');
+            }else if(Auth::user()->role == 3)
+            {
+                return redirect('/salesPersonDashboard');
+            }else if(Auth::user()->role == 4)
+            {
+                return redirect('/subdealerDashboard');
             }else{
                 return redirect('/');
             }
@@ -34,7 +40,14 @@ class AdminController extends Controller
             }else if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'role' =>2])) 
             {
 				return redirect('/dealerDashboard');
-			}else{
+			}else if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'role' =>3])) 
+            {
+				return redirect('/salesPersonDashboard');
+			}else if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'role' =>4])) 
+            {
+				return redirect('/subdealerDashboard');
+			}
+			else{
                 return redirect()->back()->withErrors('Email or Password does not match.');
 			}
         }else{

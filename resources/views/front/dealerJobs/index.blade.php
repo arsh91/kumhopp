@@ -16,7 +16,7 @@
 				<thead>
 					<tr>
 						<th width="102">Job Name</th>
-						<th width="212">Job Description</th>
+					
 						<th width="58">Date</th>
 						<th width="94">Cost</th>
 			        </tr>
@@ -27,7 +27,7 @@
 											@foreach ($dealerJobs as $job)
 							<tr data-entry-id="{{ $job->id }}">
 								<td>{{ $job->title }}</td>
-								<td><?php echo strip_tags($job->description); ?></td>
+								
 								<td>December </td>
 								<td><!--<a href="{{ url('/getJobDetail',[$job->id]) }}" class="btn btn-xs btn-primary">View Job</a>-->£500 </td>
 					        </tr>

@@ -14,7 +14,7 @@ class Job extends Model
      * @var array
      */
     protected $fillable = [
-        'customer_name', 'contact_name', 'phone', 'address', 'website', 'title', 'description', 'status', 'budget', 'deadline', 'fund_option', 'dealer_id', 'target'
+        'customer_name', 'contact_name', 'phone', 'address', 'website', 'title', 'description', 'status', 'budget', 'deadline', 'fund_option', 'dealer_id', 'target', 'job_created_by', 'sell_status', 'campaign_start_date', 'campaign_end_date', 'reward_per_tyre'
     ];
 
     public function dealers(){
@@ -24,6 +24,10 @@ class Job extends Model
 	public function dealerCompany(){
         return $this->belongsTo('App\Dealer','dealer_id','id');
     }
+	
+	public function getSalesPerson(){
+		return $this->belongsTo('App\User','job_created_by','id');
+	}
 		
 }
 

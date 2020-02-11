@@ -162,6 +162,24 @@
 								</p>
 							@endif
 						</div>
+						<div class="form-group">
+							{!! Form::label('Category', 'Category*', ['class' => 'control-label']) !!}
+							{!! Form::text('category', old('category'), ['class' => 'form-control', 'placeholder' => '']) !!}
+							@if($errors->has('category'))
+								<p class="help-block text-danger">
+									{{ $errors->first('category') }}
+								</p>
+							@endif
+						</div>
+						<div class="form-group">
+							{!! Form::label('Group', 'Group*', ['class' => 'control-label']) !!}
+							{!! Form::text('group', old('group'), ['class' => 'form-control', 'placeholder' => '']) !!}
+							@if($errors->has('group'))
+								<p class="help-block text-danger">
+									{{ $errors->first('group') }}
+								</p>
+							@endif
+						</div>
 					</div>
 				</div>
 

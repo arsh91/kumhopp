@@ -19,6 +19,7 @@ use App\Notifications\PasswordResetRequest;
 use App\Notifications\PasswordResetSuccess;
 use Mail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class DealerController extends Controller
@@ -36,9 +37,11 @@ class DealerController extends Controller
      */
     public function index()
     {
-        $dealers = User::where('role','2')->get();		
+        //$dealers1 = User::where('role','2')->get();	//old query
+		$dealers = User::with([
+            'dealers'])->where('role','2')->orderBy('id', 'ASC')->get();			
 
-        return view('dealers.index', compact('dealers'));
+        return view('dealers.index', compact('dealers', 'dealers1'));
     }
 
     /**
@@ -48,9 +51,22 @@ class DealerController extends Controller
      */
     public function create()
     {
-        $dummyID = '1';       
+        $dummyID = '1'; 		
+		
         return view('dealers.create');
     }
+
+	public function createTestingPasswords($pass){
+		
+		$dealers = User::with([
+                'dealers'])->where('role','2')->where('id','21')->get()->toArray();		
+		dd($dealers);		
+		/* if(isset($pass)){
+			$password =	Hash::make($pass);
+			dd($password);
+		} */
+		
+	}
 
     /**
      * Store a newly created dealers in storage.
@@ -92,12 +108,14 @@ class DealerController extends Controller
                     'county'=> $requestToSubmit['county'],
                     'post_code'=> $requestToSubmit['post_code'],
                     'website'=> $requestToSubmit['website'],
+                    'category'=> $requestToSubmit['category'],
+                    'group'=> $requestToSubmit['group'],
 
                 ]);
             //STEP II:- Shoot an email to DEALER with password
             $data = array('name'=>$contactName, 'password'=>$password);
 			
-			$emailContent = array('name'=>$contactName, 'password'=>$password);
+			$emailContent = array('name'=>$contactName, 'email'=>$contactEmail, 'password'=>$password);
 			
 			Mail::to($contactEmail)->send(new sendDealerPassword($emailContent));
 			
@@ -217,6 +235,8 @@ class DealerController extends Controller
                                 'post_code'=> $request['post_code'],
                                 'region'=> $request['region'],
                                 'website'=> $request['website'],
+								'category'=> $request['category'],
+								'group'=> $request['group']
                             ]);
 
         return redirect()->route('dealers.index');
@@ -231,10 +251,24 @@ class DealerController extends Controller
      */
     public function show($id)
     {
+		$salesPersonEmail = '';
         //$dealers = User::findOrFail($id);
 		$dealers = User::with([
                 'dealers'])->where(['id'=> $id])->first();
-        return view('dealers.show', compact('dealers'));
+
+		
+		//get the dealer_id and then query over sales_persons table
+		$dealer_id = $dealers->dealers->id;
+
+		$salesPerson = SalePerson::with(['salesUsers'])->where('dealer_id', $dealer_id)->get();
+
+
+		if($salesPerson->isNotEmpty()){
+			$salesPersonEmail = $salesPerson[0]->salesUsers->email;
+				
+		}
+		
+        return view('dealers.show', compact('dealers', 'salesPersonEmail'));
     }
 
 
@@ -427,36 +461,16 @@ class DealerController extends Controller
         
         $user->save();
 			
-		//STEP II:- Create a password reset link
-        $passwordReset = PasswordReset::updateOrCreate(
-            ['email' => $user->email],
-            [
-                'email' => $user->email,
-                'user_id' => $user->id,
-                'token' => str_random(60)
-             ]
-        );
-		
-        if ($user && $passwordReset)
-            $user->notify(
-                new PasswordResetRequest($passwordReset->token)
-            );
-		
-		//Mail::to($user->email)->send(new accountApprovalMailaccountApprovalMail($comment));
-		
 		//STEP II:- Shoot an email to DEALER with activation info
-		/*$contactEmail = $user->email;
+		$contactEmail = $user->email;
 		$contactName = $user->first_name;
 		$data = array('name'=>$contactName, 'comment'=>$comment);
 		Mail::send('email.accountActivation', $data, function($message) use ($contactEmail, $contactName) {         
 			$message->to($contactEmail, $contactName)->subject
-			('Kumhopp: Account Activation!');
-			$message->from('arshsharma91@gmail.com','Kumhopp');
-		}); */
+			('Kumho: Account Activation!');
+			$message->from('noreply@kumhopartner.co.uk');
+		});
         
-		
-        
-
         return redirect()->route('dealers.index');
 	}
 	

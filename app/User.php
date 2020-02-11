@@ -76,6 +76,20 @@ class User extends Authenticatable
     }
 
 	public function salespersons(){
+        //return $this->belongsTo('App\Dealer','dealer_id','id');
         return $this->hasMany('App\SalePerson', 'user_id');
+    }
+	
+	public function salesP()
+    {
+        //return $this->hasManyThrough('App\SalePerson', 'App\Dealer');
+		return $this->hasManyThrough(
+            'App\SalePerson',
+            'App\Dealer',
+            'dealer_id', 
+            'dealer_id', 
+            'id', 
+            'id'
+        );
     }
 }

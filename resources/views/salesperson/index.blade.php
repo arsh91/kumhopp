@@ -5,11 +5,11 @@
 	<div class="content-wrapper">
 		<div class="page-header">
 			<h3 class="page-title">
-				Sales Person Listing
+				Sales Person With Dealer's Listing
 			</h3>
-			 <p>
+			 <!--<p>
 				<a href="{{ route('salesperson.create') }}" class="btn btn-primary">Add New</a>
-			</p>
+			</p>-->
 		</div>
 		<div class="row">
 			<div class="col-12 grid-margin">

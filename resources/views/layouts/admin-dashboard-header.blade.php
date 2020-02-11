@@ -10,8 +10,17 @@
 				<!--<li class="nav-item active">
 					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 				</li-->
-				@if ( Auth::user()->isAdmin())
-				
+				<li style="display:none;">
+				<?php print_r(Auth::user()->role); ?>
+				</li>
+							
+					<li>
+						<a class="nav-link" href="{{ url('/') }}">
+							<span class="menu-title">Home</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+				@if ( Auth::user()->role == 1 )
 					<li class="{{ $request->segment(1) == 'dealers' ? 'active' : '' }} nav-item">
 							<a class="nav-link" href="{{ route('dealers.index') }}">
 							<span class="menu-title">Dealers</span>
@@ -19,7 +28,7 @@
 						</a>
 					</li>
 					<li class="{{ $request->segment(1) == 'salesperson' ? 'active' : '' }} nav-item">
-							<a class="nav-link" href="{{ route('salesperson.index') }}">
+							<a class="nav-link" href="{{ url('salesperson/allsalesperson') }}">
 							<span class="menu-title">Sales Person</span>
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
@@ -36,13 +45,16 @@
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
 					</li>-->
-					<li>
+	
+				
+					<li class="{{ $request->segment(1) == 'jobs' ? 'active' : '' }} nav-item">
 						<a class="nav-link" href="{{ url('/jobs') }}">
 							<span class="menu-title">Jobs</span>
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
 					</li>
-					<li>
+				
+					<li class="{{ $request->segment(1) == 'vouchers' ? 'active' : '' }} nav-item">
 						<a class="nav-link" href="{{ url('/vouchers') }}">
 							<span class="menu-title">Vouchers</span>
 							<i class="mdi mdi-contacts menu-icon"></i>
@@ -55,13 +67,13 @@
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
 					</li>
-					<li>
+					<li class="{{ $request->segment(1) == 'marketing' ? 'active' : '' }} nav-item">
 						<a class="nav-link" href="{{ url('/marketing') }}">
 							<span class="menu-title">Marketing</span>
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
 					</li>
-					<li>
+					<li class="{{ $request->segment(1) == 'downloads' ? 'active' : '' }} nav-item">
 						<a class="nav-link" href="{{ url('/downloads') }}">
 							<span class="menu-title">Tyre Information</span>
 							<i class="mdi mdi-contacts menu-icon"></i>
@@ -74,15 +86,19 @@
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
 					</li>
-				@else
-					<!-- <li>
-						<a class="nav-link" href="javascript:void(0)">
-							<span class="menu-title">Hi {{Auth::user()->first_name.' '.Auth::user()->last_name}}</span>
+				@elseif ( Auth::user()->role == 2 )
+					
+				
+					<!--<li>
+						<a class="nav-link" href="{{ url('/') }}">
+							<span class="menu-title">Home</span>
 							<i class="mdi mdi-contacts menu-icon"></i>
-						</a>						
-					</li> -->
-					<li>
-						<a class="nav-link" href="{{ url('/news') }}">
+						</a>
+					</li>-->
+				
+				
+				<li>
+						<a class="nav-link" href="{{ url('/') }}">
 							<span class="menu-title">News</span>
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
@@ -96,7 +112,7 @@
 					</li>
 				
 				
-					<li>
+					<li class="{{ $request->segment(1) == 'dealerJobs' ? 'active' : '' }} nav-item">
 						<a class="nav-link" href="{{ url('/dealerJobs') }}">
 							<span class="menu-title">Activity</span>
 							<i class="mdi mdi-contacts menu-icon"></i>
@@ -134,7 +150,80 @@
 							<i class="mdi mdi-contacts menu-icon"></i>
 						</a>
 					</li>
+				@elseif ( Auth::user()->role == 3 )
+					<li class="{{ $request->segment(1) == 'salespersonjobs' ? 'active' : '' }} nav-item">
+						<a class="nav-link" href="{{ url('/salespersonjobs') }}">
+							<span class="menu-title">Jobs</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+					<li class="{{ $request->segment(1) == 'salespersondealers' ? 'active' : '' }} nav-item">
+						<a class="nav-link" href="{{ url('/salespersondealers') }}">
+							<span class="menu-title">Dealers</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+					<li class="{{ $request->segment(1) == 'marketing' ? 'active' : '' }} nav-item">
+						<a class="nav-link" href="{{ url('/marketing') }}">
+							<span class="menu-title">Marketing</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+					<li class="{{ $request->segment(1) == 'downloads' ? 'active' : '' }} nav-item">
+						<a class="nav-link" href="{{ url('/downloads') }}">
+							<span class="menu-title">Tyre Information</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+					<li>
+						<a class="nav-link" href="{{ url('/logout') }}">
+							<span class="menu-title">Logout</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+				@elseif ( Auth::user()->role == 4 )
+					<li>
+						<a class="nav-link" href="{{ url('/news') }}">
+							<span class="menu-title">News</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+					<li>
+						<a class="nav-link" href="{{ url('/marketing') }}">
+							<span class="menu-title">Marketing</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+					<li>
+						<a class="nav-link" href="{{ url('/downloads') }}">
+							<span class="menu-title">Tyre Information</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+					
+					<li>
+						<a class="nav-link" href="{{ url('/logout') }}">
+							<span class="menu-title">Logout</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>
+					</li>
+				@else
+					sale person
 				@endif
+				
+				<!--
+				@if ( Auth::user()->isAdmin())
+					
+				
+				@else-->
+					<!-- <li>
+						<a class="nav-link" href="javascript:void(0)">
+							<span class="menu-title">Hi {{Auth::user()->first_name.' '.Auth::user()->last_name}}</span>
+							<i class="mdi mdi-contacts menu-icon"></i>
+						</a>						
+					</li> -->
+				<!--@endif
+				-->
 				
 					
 					

@@ -33,7 +33,9 @@ class UpdateDealerRequest extends FormRequest
             'town'=>'required',
             'county'=>'required',
             'post_code'=>'required',
-            'region'=>'required'
+            'region'=>'required',
+            'category'=>'required',
+            'group'=>'required'
         ];
     }
 }

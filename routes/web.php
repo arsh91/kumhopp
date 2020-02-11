@@ -20,6 +20,11 @@ Route::get('/clear-cache', function() {
     return "Cache is cleared";
 });
 
+Route::get('/resetEmailTemplate', function() {
+    Artisan::call('vendor:publish');
+    return "template created";
+});
+
 Route::get('login','AdminController@login')->name('login'); 
 Route::post('login','AdminController@login');
 
@@ -44,12 +49,20 @@ Route::get('/logout', 'AdminController@logout');
 /*Frontend Route*/
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dealerDashboard', 'DealerFrontController@dealerDashboard');
-
+	
+	//for sub-dealer access
+	Route::get('/subdealerDashboard', 'SubDealerFrontController@subDealerDashboard');
+	
+	//for sales person access
+	Route::get('/salesPersonDashboard', 'SalesPersonFrontController@salesPersonDashboard');
+	
 	/*static pages links*/
 	Route::get('/suppliers', 'DealerFrontController@suppliers');
 	Route::get('/marketing', 'DealerFrontController@marketing');
 	Route::get('/downloads', 'DealerFrontController@downloads');
-	Route::get('/news', 'DealerFrontController@news');
+	Route::get('/news', 'DealerFrontController@news')->name('news');
+	Route::get('/news2', 'DealerFrontController@news2')->name('news2');
+	Route::get('/news3', 'DealerFrontController@news3')->name('news3');
 	Route::get('/dealerJobs', 'DealerFrontController@dealerJobs');
 	Route::get('/getJobDetail/{id}', 'DealerFrontController@getJobDetail');
 	Route::get('/dealer/vouchers','DealerVoucherController@getAllVouchers');
@@ -59,6 +72,15 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::get('customer_dealer_readCSV', 'DealerController@customer_dealer_readCSV');
 	Route::get('readCSV', 'DealerController@readCSV');
+	
+	//for sales person 
+	
+	//Route::get('/salespersonjobs', 'SalesPersonFrontController@salespersonjobs')->name('salespersonjobs');
+	Route::get('/salespersondealers', 'SalesPersonFrontController@salespersondealers')->name('salespersondealers');
+	Route::resource('salespersonjobs', 'SalesPersonFrontController');
+	
+	//ajax request for create JOBS
+	Route::post('/getJobRecordByDealerId', 'JobController@getJobRecordByDealerId')->name('getJobRecordByDealerId');
 });
 
 /*Admin Route*/
@@ -67,6 +89,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::get('dashboard','AdminController@dashboard');
 	//Route::get('dealers','DealerController@index');
 	Route::get('dealers/status/{id}/{status}', 'DealerController@status');
+	Route::get('dealers/createpassword/{pass}', 'DealerController@createTestingPasswords');
 	
 	Route::resource('dealers', 'DealerController');
 
@@ -92,11 +115,12 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	
 	Route::delete('/dealers/sales/{id}/{dealer_id}', 'DealerSaleController@destroy')->name('dealersales.destroy');
 	
-	//ajax request for create JOBS
-	Route::post('/getJobRecordByDealerId', 'JobController@getJobRecordByDealerId')->name('getJobRecordByDealerId');
+	
 	
 	//for sales person concept
+	Route::get('salesperson/allsalesperson', 'SalePersonController@getSalesPersonList')->name('allsalesperson');
 	Route::resource('salesperson','SalePersonController');
+	
 	
 });
 

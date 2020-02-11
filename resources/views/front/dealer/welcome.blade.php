@@ -6,20 +6,38 @@
 <div class="content-wrapper">
   <div class="container mt-3">
     <div class="page-header">
-      <h4 class="page-title mb-4 text-right"> Hi <span style="color:red; font-weight: bold;"> {{Auth::user()->first_name.' '.Auth::user()->last_name}} </span>, Welcome to your KPP dashboard </h4>
+      <h4 class="page-title mb-4 text-right"> Hi <span style="color:red; font-weight: bold;"> {{Auth::user()->first_name.' '.Auth::user()->last_name}}</span>, welcome to your Kumho Performance Partner dashboard </h4>
       <hr>
     </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h3>Sixth Place Finish for Tony Jardine &amp; Dominic Tobin at WRGB </h3>
-        <p> Pushing up through the places during the final three stages of the Wales Rally GB, an incredible sixth-place finish for Motor Sport Digital Editor, Dominic Tobin and motorsport media man, Tony Jardine. </p>
-        <p>Delighted after his debut, Tobin explained how he enjoyed his first rally experience. </p>
-		   <p><a href="/news" class="btn btn-secondary " role="button" aria-pressed="true">Read More</a></p>
-		  
-      </div>
-      <div class="col-md-46"><img src="https://kumhotyre.co.uk/wp-content/uploads/2019/10/Tony-Jardine-and-Dominic-Tobin-celebrate-at-the-finish-of-WRGB.-300x200.jpg" class="img-fluid rounded  img-hover-zoom" alt="Latest News"> </div>
-    </div>
 	  
+	  
+	  	<h5 class="card-title">Latest News</h5>
+	  <div class="card-deck">
+		  
+      <div class="card"> <img src="../../../../public/img/n2.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Talking tyres with Tottenham</h5>
+     <p class="card-text">Kumho recently capitalised on its unique relationship as Official Tyre Partner to Tottenham Hotspur by holding an all-embracing conference for some of its key customers at the Premier League football club’s new stadium.</p>
+       </div>
+        <div class="card-footer"> <small class="text-muted"><a href="{{ route('news2') }}">Read more </a></small> </div>
+      </div>
+      <div class="card"> <img src="../../../../public/img/n1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Kumho receive even more awards.</h5>
+         <p class="card-text">In recent years, the products of the ever-innovative Korean tyre producer Kumho have received a number of iF, Red Dot, IDEA and Good Design awards.</p>
+        </div>
+        <div class="card-footer"> <small class="text-muted"><a href="{{ route('news3') }}">Read more </a></small> </div>
+      </div>
+      <div class="card"> <img src="../../../../public/img/n3.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Sixth Place Finish for Tony</h5>
+     <p class="card-text">Pushing up through the places during the final three stages of the Wales Rally GB, an incredible sixth-place finish for Motor Sport Digital Editor, Dominic Tobin and motorsport media man, Tony Jardine. </p>
+        </div>
+        <div class="card-footer"> <small class="text-muted"><a href="{{ route('news') }}">Read more </a></small> </div>
+      </div>
+    </div>
+
+	  <h5 class="card-title mt-3">Quick Links</h5>
 	  <hr>
     <div class="card-deck">
       <div class="card"> <img src="../../../../public/img/bg-image.png" class="card-img-top" alt="...">
@@ -44,6 +62,8 @@
         <div class="card-footer"> <small class="text-muted"><a href="/dealer/vouchers/">Take me there</a></small> </div>
       </div>
     </div>
+	  
+	  
   <!--    <div class="card-deck mt-3">
       <div class="card"> <img src="../../../../public/img/bg-image.png" class="card-img-top" alt="...">
         <div class="card-body">

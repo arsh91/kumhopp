@@ -11,7 +11,7 @@ class Dealer extends Model
 	
 	use SoftDeletes;
 
-    protected $fillable = ['dealer_id','account_no','contact','address1', 'town', 'county', 'post_code', 'region', 'website'];
+    protected $fillable = ['dealer_id','account_no','contact','address1', 'town', 'county', 'post_code', 'region', 'website', 'category', 'group'];
 
     public static function boot()
     {

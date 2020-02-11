@@ -43,6 +43,16 @@ class DealerFrontController extends Controller
     	//return view('front.dealer.comingsoon');	
         return view('front.dealer.news'); 
     }
+	
+	public function news2(){
+    	//return view('front.dealer.comingsoon');	
+        return view('front.dealer.news2'); 
+    }
+	
+	public function news3(){
+    	//return view('front.dealer.comingsoon');	
+        return view('front.dealer.news3'); 
+    }
 
 	/*Get the jobs created by admin with this dealer_id
 	* first get dealer_id from dealer table using user_id and then use it to fetch the jobs

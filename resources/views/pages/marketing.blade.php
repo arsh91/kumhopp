@@ -28,13 +28,45 @@
 						
 						<div class="container">
 							
+							<div class="card-deck mb-3 text-center">
+    <div class="card mb-6 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Kumho Tyre Logo </h4>
+      </div>
+      <div class="card-body">
+		   
+		  <img class="img-fluid"  src="../../../public/img/KT-logo.jpg" >
+		  
+		  
+
+		  <a class="btn btn-danger btn-block" href="../../../public/img/KT-logo.jpg" role="button">Download Logo</a>
+      </div>
+    </div>
+
+								  <div class="card mb-6 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Kumho Tyre Logo with Strapline</h4>
+      </div>
+      <div class="card-body">
+		   
+		  <img class="img-fluid"  src="../../../public/img/KT-logo-ws.jpg" >
+		  
+		  
+
+		  <a class="btn btn-danger btn-block" href="../../../public/img/KT-logo-ws.jpg" role="button">Download Logo with Strapline</a>
+      </div>
+    </div>
+    
+  </div>
+							<h2>WEBSITE INFORMATION </h2> <hr>
+							
   <div class="card-deck mb-3 text-center">
     <div class="card mb-6 shadow-sm">
       <div class="card-header">
         <h4 class="my-0 font-weight-normal">Kumho Tyre Range </h4>
       </div>
       <div class="card-body">
-		   <p> Add the Kumho Tyre range to your site just simply Insert the following HTML into your website's code wherever you'd like the kumho tyre page: </p>
+		   <p> Add the Kumho Tyre range to your site just simply Insert the following HTML into your website's code wherever you'd like the Kumho tyre page: </p>
 		  <img class="img-fluid" src="../../../public/img/Tyre-range.jpg" alt=""/> 
        
    <div class="code-display" id="text_copy">&lt;script class='kumho_insertion'&gt;var 
@@ -44,7 +76,8 @@
 		  <a class="btn btn-info btn-block" href="https://kumhomarketing.co.uk/kumho.html" role="button">View Demo page</a>
       </div>
     </div>
-
+	  
+<!--	@if ( Auth::user()->role != 4 )
     <div class="card mb-6 shadow-sm">
       <div class="card-header">
         <h4 class="my-0 font-weight-normal">Kumho Warranty</h4>
@@ -58,7 +91,216 @@
 		  <a class="btn btn-info btn-block" href="https://kumhomarketing.co.uk/tyre-warranty.html" role="button">View Demo page</a>
       </div>
     </div>
+	@endif-->
+	  
   </div>
+					
+		<h2>WEB VIDEOS</h2> <hr>	
+							<div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+     
+      <div class="card-body">
+		  <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/f48c1dN4fLU" allowfullscreen></iframe>
+</div>
+		  
+      </div>
+    </div>
+		
+								
+    <div class="card mb-4 shadow-sm">
+
+      <div class="card-body">
+		 
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0PtAqAjeKpk" allowfullscreen></iframe>
+</div>
+      </div>
+    </div>
+								
+								   <div class="card mb-4 shadow-sm">
+
+      <div class="card-body">
+		  <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/imhh8qFr25M" allowfullscreen></iframe>
+</div>
+
+      </div>
+    </div>
+
+  </div>
+							
+							<div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+     
+      <div class="card-body">
+		  <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/BP--1BJKyPo" allowfullscreen></iframe>
+</div>
+		  
+      </div>
+    </div>
+		
+								
+    <div class="card mb-4 shadow-sm">
+
+      <div class="card-body">
+		 
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/MzkgPwKhgDc" allowfullscreen></iframe>
+</div>
+      </div>
+    </div>
+								
+								   <div class="card mb-4 shadow-sm">
+
+      <div class="card-body">
+		  <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/m7It1Y5nrXY" allowfullscreen></iframe>
+</div>
+
+      </div>
+    </div>
+
+  </div>
+							<div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+     
+      <div class="card-body">
+		  <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9ZmEkljyv1U" allowfullscreen></iframe>
+</div>
+		  
+      </div>
+    </div>
+		
+								
+    <div class="card mb-4 shadow-sm">
+
+      <div class="card-body">
+		 
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LlYQ4GPhIH4" allowfullscreen></iframe>
+</div>
+      </div>
+    </div>
+								
+								   <div class="card mb-4 shadow-sm">
+
+      <div class="card-body">
+		  <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/r1WVCoK4crk" allowfullscreen></iframe>
+</div>
+
+      </div>
+    </div>
+
+  </div>
+	
+						<h2>PRODUCT	POSTERS </h2> <hr>
+						<div class="card-deck mb-3 text-center">
+		
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Crugen HP91 Poster</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-title pricing-card-title"></p>
+   
+		  <img class="img-fluid" src="../../../public/img/Crugen_HP91.jpg" alt=""/> 
+
+      </div>
+		  <div class="card-footer text-muted">
+            <a href="../../../public/img/Crugen_HP91.jpg">Download</a> </div>
+    </div>
+								
+								
+		<div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Ecowing ES31 Poster</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-title pricing-card-title"></p>
+   
+		  <img class="img-fluid" src="../../../public/img/Ecowing_ES31.jpg" alt=""/> 
+
+      </div>
+									    <div class="card-footer text-muted">
+    <a href="../../../public/img/Ecowing_ES31.jpg">Download</a> </div>
+
+    </div>
+								
+		  <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Ecsta PS91 Poster</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-title pricing-card-title"></p>
+   
+		  <img class="img-fluid" src="../../../public/img/Ecsta_PS91.jpg" alt=""/> 
+
+      </div>
+			    <div class="card-footer text-muted">
+  <a href="../../../public/img/Ecsta_PS91.jpg">Download</a> </div>
+
+							
+    </div>						 
+
+    
+  </div>						
+							
+	<div class="card-deck mb-3 text-center">
+		
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Ecsta PS71 Poster</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-title pricing-card-title"></p>
+   
+		  <img class="img-fluid" src="../../../public/img/Ecsta_PS71.jpg" alt=""/> 
+
+      </div>
+		  <div class="card-footer text-muted">
+            <a href="../../../public/img/Ecsta_PS71.jpg">Download</a> </div>
+    </div>
+								
+								
+		<div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">PortTran KC53 Poster</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-title pricing-card-title"></p>
+   
+		  <img class="img-fluid" src="../../../public/img/PortTran_KC53.jpg" alt=""/> 
+
+      </div>
+									    <div class="card-footer text-muted">
+    <a href="../../../public/img/PortTran_KC53.jpg">Download</a> </div>
+
+    </div>
+								
+		  <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Solous4S HA31 Poster</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-title pricing-card-title"></p>
+   
+		  <img class="img-fluid" src="../../../public/img/Solous4S_HA31.jpg" alt=""/> 
+
+      </div>
+			    <div class="card-footer text-muted">
+  <a href="../../../public/img/Solous4S_HA31.jpg">Download</a> </div>
+
+							
+    </div>						 
+
+    
+  </div>
+							
+							<h2>CAMPAIGN INFORMATION </h2> <hr>
 							
 	<div class="card-deck mb-3 text-center">
     <div class="card mb-4 shadow-sm">
@@ -127,12 +369,12 @@
 								
 		  <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Love2shop Holidays </h4>
+        <h4 class="my-0 font-weight-normal">Garden Toys </h4>
       </div>
       <div class="card-body">
         <p class="card-title pricing-card-title"></p>
    
-		  <img class="img-fluid" src="../../../public/img/Love2shop-holiday.jpg" alt=""/> 
+		  <img class="img-fluid" src="../../../public/img/SummerToys.jpg" alt=""/> 
 
       </div>
     </div>						 
@@ -172,7 +414,7 @@
       <div class="card-body">
         <p class="card-title pricing-card-title"></p>
    
-		  <img class="img-fluid" src="../../../public/img/Love2shop-holiday.jpg" alt=""/> 
+		  <img class="img-fluid" src="../../../public/img/screen.jpg" alt=""/> 
 
       </div>
     </div>						 
